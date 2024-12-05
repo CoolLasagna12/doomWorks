@@ -1,7 +1,5 @@
-#include "display.h"
-#include "eadkpp.h"
-#include "palette.h"
 #include "player.h"
+#include "palette.h"
 
 Player::Player() :
   p_x(EADK::Screen::Width/2),
