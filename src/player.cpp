@@ -16,9 +16,9 @@ void Player::move(int deltaX, int deltaY) {
   draw(Black);
   p_x += deltaX;
   p_y += deltaY;
-  p_x = p_x <= k_xLowerBound ? k_xLowerBound : m_x;
-  p_y = p_y <= k_yLowerBound ? k_yLowerBound : m_y;
-  p_x = p_x >= k_xUpperBound ? k_xUpperBound : m_x;
-  p_y = p_y >= k_yUpperBound ? k_yUpperBound : m_y;
+  p_x = p_x <= k_xLowerBound ? k_xLowerBound : p_x;
+  p_y = p_y <= k_yLowerBound ? k_yLowerBound : p_y;
+  p_x = p_x >= k_xUpperBound ? k_xUpperBound : p_x;
+  p_y = p_y >= k_yUpperBound ? k_yUpperBound : p_y;
   draw(Yellow);
 }
