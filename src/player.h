@@ -13,10 +13,10 @@ public:
   void move(int deltaX, int deltaY);
   static constexpr int k_step = 1;
 private:
-  static constexpr int k_xLowerBound = Display::CommonHorizontalMargin;
-  static constexpr int k_xUpperBound = EADK::Screen::Width - Display::CommonHorizontalMargin;
-  static constexpr int k_yLowerBound = 3*Display::CommonVerticalMargin;
-  static constexpr int k_yUpperBound = EADK::Screen::Height - Display::CommonVerticalMargin;
+  static constexpr int k_xLowerBound = 0;
+  static constexpr int k_xUpperBound = EADK::Screen::Width;
+  static constexpr int k_yLowerBound = 0;
+  static constexpr int k_yUpperBound = EADK::Screen::Height;
   void draw(const EADK::Color c) const;
   int p_x;
   int p_y;
