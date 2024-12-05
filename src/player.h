@@ -8,8 +8,8 @@
   class Player {
 public:
   Player();
-  int x() const { return m_x; }
-  int y() const { return m_y; }
+  int x() const { return p_x; }
+  int y() const { return p_y; }
   void move(int deltaX, int deltaY);
   static constexpr int k_step = 10;
 private:
@@ -18,8 +18,8 @@ private:
   static constexpr int k_yLowerBound = 3*Display::CommonVerticalMargin;
   static constexpr int k_yUpperBound = EADK::Screen::Height - Display::CommonVerticalMargin;
   void draw(const EADK::Color c) const;
-  int m_x;
-  int m_y;
+  int p_x;
+  int p_y;
 };
 
 #endif
