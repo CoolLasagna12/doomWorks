@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
     {
         EADK::Keyboard::State kbdState = EADK::Keyboard::scan();
         running = !kbdState.keyDown(EADK::Keyboard::Key::Home);
+        EADK::Timing::msleep(1);
         if (kbdState.keyDown(EADK::Keyboard::Key::Up)) {
             player.move(0, -Player::k_step);
         }
@@ -28,8 +29,7 @@ int main(int argc, char *argv[])
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Right)) {
             player.move(Player::k_step, 0);
-        EADK::Timing::msleep(1);
-    }
+        }
         
     }
 }
