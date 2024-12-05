@@ -28,6 +28,7 @@ int main(int argc, char *argv[])
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Right)) {
             player.move(Player::k_step, 0);
+        EADK::Timing::Msleep(1)
     }
         
     }
