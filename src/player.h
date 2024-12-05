@@ -5,7 +5,7 @@
 #include "eadkpp.h"
 
 
-class Spaceship {
+  class Player {
 public:
   Player();
   int x() const { return m_x; }
