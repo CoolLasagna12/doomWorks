@@ -7,7 +7,6 @@
 #endif
 
 Player::Player() :
-  float tempDir;
   p_x(EADK::Screen::Width/2),
   p_y(EADK::Screen::Height - Display::CommonVerticalMargin)
 {
@@ -23,9 +22,10 @@ void Player::turn(float deg) {
 }
 
 void Player::move(int move) {
+  float tempDir;
   tempDir = (direction * M_PI)/180;
   draw(Black);
-  p_x += move * sin(tempDir)
+  p_x += move * sin(tempDir);
   p_y -= move * cos(tempDir);
   p_x = p_x <= k_xLowerBound ? k_xLowerBound : p_x;
   p_y = p_y <= k_yLowerBound ? k_yLowerBound : p_y;
