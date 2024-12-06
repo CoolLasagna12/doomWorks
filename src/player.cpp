@@ -1,5 +1,6 @@
 #include "player.h"
 #include "palette.h"
+#include <cmath>
 
 Player::Player() :
   p_x(EADK::Screen::Width/2),
@@ -13,7 +14,7 @@ void Player::draw(const EADK::Color color) const {
 }
 
 void Player::turn(int rad) {
-  direction = sin(arcsin(direction) + rad)
+  direction = sin(asin(direction) + rad)
 }
 
 void Player::move(int deltaX, int deltaY) {
