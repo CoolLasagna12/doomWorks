@@ -1,4 +1,4 @@
-##Numworks is cool, but can it runs doom?
+## Numworks is cool, but can it runs doom?
 
 At this day we still can't make Doom run on a calculator. I found out how to play to [Wolfenstein](https://github.com/zenith391/numworks-wolfenstein), but it isn't possible for doom! 😡 So, I thought that even if my knowledge in C++ was shitty, I could give it a try! 😉
 
