@@ -2,7 +2,12 @@
 #include "palette.h"
 #include <cmath>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846
+#endif
+
 Player::Player() :
+  float tempDir;
   p_x(EADK::Screen::Width/2),
   p_y(EADK::Screen::Height - Display::CommonVerticalMargin)
 {
