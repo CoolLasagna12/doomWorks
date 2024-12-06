@@ -25,10 +25,10 @@ int main(int argc, char *argv[])
             player.move(0, Player::k_step);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Left)) {
-            player.move(-Player::k_step, 0);
+            player.turn(-Player::k_turn_step);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Right)) {
-            player.move(Player::k_step, 0);
+            player.turn(Player::k_turn_step);
         }
         
     }
