@@ -13,7 +13,7 @@ public:
   void move(int deltaX, int deltaY);
   static constexpr int k_step = 1;
   static constexpr int k_turn_step = 0.01;
-  int direction = 0;
+  float direction = 0.0;
 private:
   static constexpr int k_xLowerBound = Display::CommonHorizontalMargin/2;
   static constexpr int k_xUpperBound = EADK::Screen::Width - Display::CommonHorizontalMargin/2;
