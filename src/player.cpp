@@ -12,6 +12,10 @@ void Player::draw(const EADK::Color color) const {
   EADK::Display::pushRectUniform(EADK::Rect(p_x - 10, p_y - 10, 20, 20), color);
 }
 
+void Player::turn(int rad) {
+  direction = sin(arcsin(direction) + rad)
+}
+
 void Player::move(int deltaX, int deltaY) {
   draw(Black);
   p_x += deltaX;
