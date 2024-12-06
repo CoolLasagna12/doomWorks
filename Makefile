@@ -23,6 +23,7 @@ CPPFLAGS += -D__RODATA_EADK_API_LEVEL__=\"1.0\" -D__RODATA_EADK_APP_NAME__=\"NAM
 LDFLAGS = -Wl,--relocatable
 LDFLAGS += -nostartfiles
 LDFLAGS += --specs=nano.specs
+LDFLAGS += -lm
 
 ifeq ($(LINK_GC),1)
 CPPFLAGS += -fdata-sections -ffunction-sections
