@@ -12,6 +12,7 @@ public:
   int y() const { return p_y; }
   void move(int deltaX, int deltaY);
   static constexpr int k_step = 1;
+  int direction = 0;
 private:
   static constexpr int k_xLowerBound = Display::CommonHorizontalMargin/2;
   static constexpr int k_xUpperBound = EADK::Screen::Width - Display::CommonHorizontalMargin/2;
