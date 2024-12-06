@@ -10,11 +10,11 @@ public:
   Player();
   int x() const { return p_x; }
   int y() const { return p_y; }
-  void move(int deltaX, int deltaY);
+  void move(int move);
   static constexpr int k_step = 1;
   static constexpr int k_turn_step = 0.01;
   float direction = 0.0;
-  void turn(float rad);
+  void turn(float deg);
 private:
   static constexpr int k_xLowerBound = Display::CommonHorizontalMargin/2;
   static constexpr int k_xUpperBound = EADK::Screen::Width - Display::CommonHorizontalMargin/2;
