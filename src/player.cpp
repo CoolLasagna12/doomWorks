@@ -1,6 +1,7 @@
 #include "player.h"
 #include "palette.h"
 #include <cmath>
+#include <stdlib.h>
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -25,8 +26,8 @@ void Player::move(int move) {
   float tempDir;
   tempDir = (direction * M_PI)/180;
   draw(Black);
-  p_x += move * std::sinf(tempDir);
-  p_y -= move * std::cosf(tempDir);
+  p_x += move * std::sin(tempDir);
+  p_y -= move * std::cos(tempDir);
   p_x = p_x <= k_xLowerBound ? k_xLowerBound : p_x;
   p_y = p_y <= k_yLowerBound ? k_yLowerBound : p_y;
   p_x = p_x >= k_xUpperBound ? k_xUpperBound : p_x;
