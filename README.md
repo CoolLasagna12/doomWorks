@@ -1,9 +1,17 @@
-[![Build](https://github.com/riley0122/numworks_template_cpp/actions/workflows/main.yml/badge.svg)](https://github.com/riley0122/numworks_template_cpp/actions/workflows/main.yml)
-# C++ Numworks Development template
+##Numworks is cool, but can it runs doom?
 
-This is a template to start developing for the [Numworks](https://www.numworks.com/) graphing calculator.
+At this day we still can't make Doom run on a calculator. I found out how to play to [Wolfenstein](https://github.com/zenith391/numworks-wolfenstein), but it isn't possible for doom! 😡 So, I thought that even if my knowledge in C++ was shitty, I could give it a try! 😉
 
-This template was reverse-engineered from the [Numworks C++ sample project](https://github.com/numworks/epsilon-sample-app-cpp).
+## Roadmap
+
+❌
+❌
+❌
+❌
+❌
+❌
+❌
+❌
 
 ## Building
 
