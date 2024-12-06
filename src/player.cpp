@@ -18,7 +18,7 @@ void Player::turn(float deg) {
   direction %= 360
 }
 
-void Player::move(int deltaX, int deltaY) {
+void Player::move(int move) {
   draw(Black);
   p_x += deltaX;
   p_y += deltaY;
