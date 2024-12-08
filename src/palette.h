@@ -5,5 +5,6 @@
 
 constexpr static EADK::Color Black(0x000000);
 constexpr static EADK::Color Yellow(0xffff00);
+constexpr static EADK::Color White(0xffffff);
 
 #endif
