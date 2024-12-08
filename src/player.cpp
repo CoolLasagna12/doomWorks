@@ -21,8 +21,9 @@ void Player::turn(float deg) {
 
 void Player::move(int move) {
   draw(Black);
-  p_x += move * TrigoApprox::sinus(direction, false);
-  p_y -= move * TrigoApprox::sinus(direction, true);
+  TrigoApprox trigo_obj;
+  p_x += move * trigo_obj.sinus(direction, false);
+  p_y -= move * trigo_obj.sinus(direction, true);
   p_x = p_x <= k_xLowerBound ? k_xLowerBound : p_x;
   p_y = p_y <= k_yLowerBound ? k_yLowerBound : p_y;
   p_x = p_x >= k_xUpperBound ? k_xUpperBound : p_x;
