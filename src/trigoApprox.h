@@ -1,14 +1,12 @@
-#ifndef TRIGOAPPROX_H
-#define TRIGOAPPROX_H
+#ifndef TRIGO_APPROX_H
+#define TRIGO_APPROX_H
 
-namespace TrigoUtils {
+class TrigoUtils {
+public:
+    static float modulo(float angle);
     
-    class Trigo {
-    public:
-        static float sinus(float x, bool cos);
-    private:
-        static float modulo(float angle);
-    };
-}
+private:
+    static float sinus(float x, bool cos);
+};
 
 #endif
