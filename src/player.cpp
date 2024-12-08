@@ -2,7 +2,6 @@
 #include "palette.h"
 #include "trigoApprox.h"
 #include <cmath>
-#include <stdlib.h>
 #include <string>
 
 Player::Player() :
