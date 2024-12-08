@@ -1,13 +1,22 @@
 #include "trigoApprox.h"
 
 namespace TrigoUtils {
+    float modulo(float angle) {
+        while (angle < 0) {
+            angle += 360.0f;
+        }
+        while (angle >= 360) {
+            angle -= 360.0f;
+        }
+        return angle;
+    }
     float sinus(float x, bool cos) {
         const float PI = 3.14159265359f;
         x = x * (PI / 180.0f);
         if (cos == true) {
-          x -= 90;
+          x -= PI / 2;
         }
-        x = fmod(x, 2 * PI);
+        x = modulo(x);
         float term = x;
         float sinus = term;
         int sign = -1;
