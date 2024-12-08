@@ -1,7 +1,7 @@
 #include "trigoApprox.h"
 
 class TrigoUtils {
-public:
+private:
     static float modulo(float angle) {
         while (angle < 0) {
             angle += 360.0f;
@@ -11,7 +11,7 @@ public:
         }
         return angle;
     }
-private:
+public:
     static float sinus(float x, bool cos) {
         const float PI = 3.14159265359f;
         x = x * (PI / 180.0f);
