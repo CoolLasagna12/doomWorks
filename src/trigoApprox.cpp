@@ -1,6 +1,6 @@
 #include "trigoApprox.h"
 
-static float modulo(float angle) {
+static float TrigoApprox::modulo(float angle) {
     while (angle < 0) {
         angle += 360.0f;
     }
@@ -9,7 +9,7 @@ static float modulo(float angle) {
     }
     return angle;
 }
-static float sinus(float x, bool cos) {
+static float TrigoApprox::sinus(float x, bool cos) {
     const float PI = 3.14159265359f;
     x = x * (PI / 180.0f);
     if (cos == true) {
