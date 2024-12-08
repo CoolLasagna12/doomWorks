@@ -41,10 +41,10 @@ LDFLAGS += -flinker-output=nolto-rel
 endif
 
 .PHONY: build
-build: $(BUILD_DIR)/doomWorks.bin
+build: $(BUILD_DIR)/NAME.bin
 
 .PHONY: run
-run: $(BUILD_DIR)/doomWorks.nwa
+run: $(BUILD_DIR)/NAME.nwa
 	@echo "INSTALL $<"
 	$(Q) $(NWLINK) install-nwa $<
 
