@@ -1,6 +1,6 @@
 #include "trigoApprox.h"
 
-class TrigoUtils {
+class TrigoApprox {
 private:
     static float modulo(float angle) {
         while (angle < 0) {
