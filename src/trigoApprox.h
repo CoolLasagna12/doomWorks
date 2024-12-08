@@ -1,7 +1,7 @@
 #ifndef TRIGO_APPROX_H
 #define TRIGO_APPROX_H
 
-class TrigoUtils {
+class TrigoApprox {
 private:
     static float modulo(float angle);
 public:
