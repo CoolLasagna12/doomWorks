@@ -14,7 +14,7 @@ src = $(addprefix src/,\
   main.cpp \
   eadk_vars.cpp \
   player.cpp \
-  trigoApprox.cpp
+  trigoApprox.cpp \
 )
 
 CPPFLAGS = -std=c++11 -fno-exceptions
