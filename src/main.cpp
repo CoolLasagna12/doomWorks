@@ -19,10 +19,10 @@ int main(int argc, char *argv[])
         running = !kbdState.keyDown(EADK::Keyboard::Key::Home);
         EADK::Timing::msleep(1);
         if (kbdState.keyDown(EADK::Keyboard::Key::Up)) {
-            player.move(Player::k_step);
+            player.move(-Player::k_step);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Down)) {
-            player.move(-Player::k_step);
+            player.move(Player::k_step);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Left)) {
             player.turn(-Player::k_turn_step);
