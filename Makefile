@@ -24,7 +24,7 @@ CPPFLAGS += -D__RODATA_EADK_API_LEVEL__=\"1.0\" -D__RODATA_EADK_APP_NAME__=\"doo
 CPPFLAGS += -lm
 LDFLAGS = -Wl,--relocatable
 LDFLAGS += -nostartfiles
-LDFLAGS += --specs=nosys.specs
+LDFLAGS += --specs=nano.specs
 LDFLAGS += -lm
 
 ifeq ($(LINK_GC),1)
