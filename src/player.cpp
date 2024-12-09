@@ -1,6 +1,7 @@
 #include "player.h"
 #include "palette.h"
 #include "trigoApprox.h"
+#include "transformations.h"
 
 Player::Player() :
   p_x(EADK::Screen::Width / 2),
