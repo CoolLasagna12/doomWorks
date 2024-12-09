@@ -2,6 +2,7 @@
 #include "palette.h"
 #include "trigoApprox.h"
 #include <cstdio>
+#include <string>
 
 Player::Player() :
   p_x(EADK::Screen::Width / 2),
