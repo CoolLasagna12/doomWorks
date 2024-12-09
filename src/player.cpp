@@ -1,7 +1,7 @@
 #include "player.h"
 #include "palette.h"
 #include "trigoApprox.h"
-#include <cstdlib.h>
+#include <stdlib.h>
 #include <string>
 
 Player::Player() :
