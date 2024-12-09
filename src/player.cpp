@@ -25,9 +25,9 @@ void Player::move(int move) {
   p_y -= move * trigo_obj.sinus(direction, true);
   Transformations transfo_obj;
   EADK::Display::drawString("Hello World", EADK::Point{10, 0}, false, White, Black);
-  EADK::Display::drawString(transfo_obj.floatToString(move), EADK::Point{10, 20}, false, White, Black);
-  EADK::Display::drawString(transfo_obj.floatToString(trigo_obj.sinus(direction, false)), EADK::Point{10, 40}, false, White, Black);
-  EADK::Display::drawString(transfo_obj.floatToString(trigo_obj.sinus(direction, true)), EADK::Point{10, 60}, false, White, Black);
+  EADK::Display::drawString(transfo_obj.floatToString(move).c_str(), EADK::Point{10, 20}, false, White, Black);
+  EADK::Display::drawString(transfo_obj.floatToString(trigo_obj.sinus(direction, false)).c_str(), EADK::Point{10, 40}, false, White, Black);
+  EADK::Display::drawString(transfo_obj.floatToString(trigo_obj.sinus(direction, true)).c_str(), EADK::Point{10, 60}, false, White, Black);
   p_x = p_x <= k_xLowerBound ? k_xLowerBound : p_x;
   p_y = p_y <= k_yLowerBound ? k_yLowerBound : p_y;
   p_x = p_x >= k_xUpperBound ? k_xUpperBound : p_x;
