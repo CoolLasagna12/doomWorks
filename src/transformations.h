@@ -3,7 +3,7 @@
 
 class Transformations {
 public:
-    std::string intToString(float num);
+    std::string floatToString(float num);
 };
 
 #endif
