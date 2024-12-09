@@ -25,10 +25,10 @@ float TrigoApprox::sinus(float x, bool cos) {
         sinus += sign * term;
         sign *= -1;
     }
-    if (sinus > 1.0f) {
-        sinus = 1.0f;
-    } else if (sinus < -1.0f) {
-        sinus = -1.0f;
-    }
+    //if (sinus > 1.0f) {
+        //sinus = 1.0f;
+    //} else if (sinus < -1.0f) {
+        //sinus = -1.0f;
+    //}
     return sinus;
 }
