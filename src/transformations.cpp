@@ -26,7 +26,7 @@ std::string Transformations::floatToString(float num) {
   float decimalPart = num - static_cast<int>(num);
   if (decimalPart > 0.0f) {
     result += '.';
-    for (int i = 0; i < precision; ++i) {
+    for (int i = 0; i < 5; ++i) {
       decimalPart *= 10;
       int digit = static_cast<int>(decimalPart);
       result += (digit + '0');
