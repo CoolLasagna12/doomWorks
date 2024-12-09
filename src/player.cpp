@@ -22,6 +22,38 @@ void Player::move(int move) {
   TrigoApprox trigo_obj;
   p_x += move * trigo_obj.sinus(direction, false);
   p_y -= move * trigo_obj.sinus(direction, true);
+  if (move > 0.0f) {
+    EADK::Display::drawString("move > 0", EADK::Point{10, 20}, false, White, Black);
+  } else {
+    EADK::Display::drawString("move < 0", EADK::Point{10, 20}, false, White, Black);
+  }
+  if (trigo_obj.sinus(direction, false) < 0.0f) {
+    EADK::Display::drawString("sin direction > 0", EADK::Point{10, 40}, false, White, Black);
+  } else if (trigo_obj.sinus(direction, false) < 10.0f) {
+    EADK::Display::drawString("sin direction < 10", EADK::Point{10, 40}, false, White, Black);
+  } else if (trigo_obj.sinus(direction, false) < 100.0f) {
+    EADK::Display::drawString("sin direction < 100", EADK::Point{10, 40}, false, White, Black);
+  } else {
+    EADK::Display::drawString("sin direction > 100", EADK::Point{10, 40}, false, White, Black);
+  }
+  if (direction < 0.0f) {
+    EADK::Display::drawString("direction > 0", EADK::Point{10, 60}, false, White, Black);
+  } else if (direction < 10.0f) {
+    EADK::Display::drawString("direction < 10", EADK::Point{10, 60}, false, White, Black);
+  } else if (direction < 100.0f) {
+    EADK::Display::drawString("direction < 100", EADK::Point{10, 60}, false, White, Black);
+  } else {
+    EADK::Display::drawString("direction > 100", EADK::Point{10, 60}, false, White, Black);
+  }
+  if (trigo_obj.sinus(direction, true) < 0.0f) {
+    EADK::Display::drawString("cos direction > 0", EADK::Point{10, 80}, false, White, Black);
+  } else if (trigo_obj.sinus(direction, true) < 10.0f) {
+    EADK::Display::drawString("cos direction < 10", EADK::Point{10, 80}, false, White, Black);
+  } else if (trigo_obj.sinus(direction, true) < 100.0f) {
+    EADK::Display::drawString("cos direction < 100", EADK::Point{10, 80}, false, White, Black);
+  } else {
+    EADK::Display::drawString("cos direction > 100", EADK::Point{10, 80}, false, White, Black);
+  }
   EADK::Display::drawString("Hello World", EADK::Point{10, 0}, false, White, Black);
   p_x = p_x <= k_xLowerBound ? k_xLowerBound : p_x;
   p_y = p_y <= k_yLowerBound ? k_yLowerBound : p_y;
