@@ -1,7 +1,7 @@
 #include "transformations.h"
 #include <cmath>
 
-std::string Transformations::floatToString(float num) {
+const char* Transformations::floatToString(float num) {
   if (num == 0.0f) {
     return "0";
   }
@@ -33,6 +33,11 @@ std::string Transformations::floatToString(float num) {
       decimalPart -= digit;
     }
   }
+  char* cstr = new char[result.length() + 1];
+  for (size_t i = 0; i < result.length(); ++i) {
+    cstr[i] = result[i];
+  }
+  cstr[result.length()] = '\0';
 
-  return result;
+  return cstr;
 }
