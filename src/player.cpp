@@ -24,8 +24,10 @@ void Player::move(int move) {
   p_y -= move * trigo_obj.sinus(direction, true);
   if (move > 0.0f) {
     EADK::Display::drawString("move > 0", EADK::Point{10, 20}, false, White, Black);
+  } else if (move < 10.0f) {
+    EADK::Display::drawString("move < 10", EADK::Point{10, 20}, false, White, Black);
   } else {
-    EADK::Display::drawString("move < 0", EADK::Point{10, 20}, false, White, Black);
+    EADK::Display::drawString("move > 10", EADK::Point{10, 20}, false, White, Black);
   }
   if (trigo_obj.sinus(direction, false) < 0.0f) {
     EADK::Display::drawString("sin direction > 0", EADK::Point{10, 40}, false, White, Black);
