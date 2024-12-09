@@ -12,7 +12,7 @@ public:
   int y() const { return p_y; }
   void move(int move);
   static constexpr int k_step = 1;
-  static constexpr int k_turn_step = 0.01;
+  static constexpr float k_turn_step = 0.01;
   float direction = 0.0;
   void turn(float deg);
 private:
