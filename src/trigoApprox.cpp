@@ -1,4 +1,5 @@
 #include "trigoApprox.h"
+#include <algorithm>
 
 float TrigoApprox::modulo(float angle) {
     while (angle < 0) {
@@ -20,9 +21,10 @@ float TrigoApprox::sinus(float x, bool cos) {
     float sinus = term;
     int sign = -1;
     for (int i = 3; i <= 15; i += 2) {
-        term *= x * x / (i * (i - 1));
+        term *= (x * x) / (i * (i - 1));
         sinus += sign * term;
         sign *= -1;
     }
+    sinus = std::fmax(-1.0f, std::fmin(1.0f, sinus));
     return sinus;
 }
