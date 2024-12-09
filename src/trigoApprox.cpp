@@ -2,10 +2,10 @@
 #include <algorithm>
 
 float TrigoApprox::modulo(float angle) {
-    while (angle < 0) {
+    while (angle < 0.0f) {
         angle += 360.0f;
     }
-    while (angle >= 360) {
+    while (angle >= 360.0f) {
         angle -= 360.0f;
     }
     return angle;
@@ -25,6 +25,10 @@ float TrigoApprox::sinus(float x, bool cos) {
         sinus += sign * term;
         sign *= -1;
     }
-    sinus = std::fmax(-1.0f, std::fmin(1.0f, sinus));
+    if (sinus > 1.0f) {
+        sinus = 1.0f;
+    } else if (sinus < -1.0f) {
+        sinus = -1.0f;
+    }
     return sinus;
 }
