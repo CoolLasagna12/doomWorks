@@ -4,7 +4,7 @@
 
 class Transformations {
 public:
-    std::string floatToString(float num);
+    const char* floatToString(float num);
 };
 
 #endif
