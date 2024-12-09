@@ -1,3 +1,5 @@
+#include "transformations.h"
+
 std::string transformations::intToString(int num) {
   if (num == 0) {
     return "0";
