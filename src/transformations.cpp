@@ -1,7 +1,7 @@
 #include "transformations.h"
 #include <cmath>
 
-std::string Transformations::intToString(float num) {
+std::string Transformations::floatToString(float num) {
   if (num == 0.0f) {
     return "0";
   }
