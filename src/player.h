@@ -3,6 +3,7 @@
 
 #include "display.h"
 #include "eadkpp.h"
+#include <string>
 
 
   class Player {
