@@ -5,12 +5,19 @@ At this day we still can't make Doom run on a calculator. I found out how to pla
 ## Roadmap
 
 ▶️ Raycasting system
+
 ❌ Map and walls texturing
+
 ❌ Better player movements and collision
+
 ❌ Ennemies AI and Sprites
+
 ❌ Main Menu
+
 ❌ HUD
+
 ❌ Multiple levels and gameplay enhancement
+
 ❌ Items / Inventory
 
 ## Building
