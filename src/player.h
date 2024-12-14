@@ -3,14 +3,14 @@
 
 #include "display.h"
 #include "eadkpp.h"
-#include <string>
+
 
 
   class Player {
 public:
   Player();
-  int x() const { return p_x; }
-  int y() const { return p_y; }
+  float playerX;
+  float playerY;
   void move(int move);
   static constexpr int k_step = 1;
   static constexpr float k_turn_step = 0.01;
@@ -22,8 +22,6 @@ private:
   static constexpr int k_yLowerBound = Display::CommonVerticalMargin/2;
   static constexpr int k_yUpperBound = EADK::Screen::Height - Display::CommonVerticalMargin/2;
   void draw(const EADK::Color c) const;
-  int p_x;
-  int p_y;
 };
 
 #endif

@@ -14,9 +14,9 @@ src = $(addprefix src/,\
   main.cpp \
   eadk_vars.cpp \
   player.cpp \
-  trigoApprox.cpp \
-  transformations.cpp \
+  math.cpp \
 )
+
 
 CPPFLAGS = -std=c++11 -fno-exceptions
 CPPFLAGS += -Os -Wall
@@ -27,6 +27,7 @@ LDFLAGS = -Wl,--relocatable
 LDFLAGS += -nostartfiles
 LDFLAGS += --specs=nano.specs
 LDFLAGS += -lm
+
 
 ifeq ($(LINK_GC),1)
 CPPFLAGS += -fdata-sections -ffunction-sections
@@ -55,11 +56,11 @@ $(BUILD_DIR)/%.bin: $(BUILD_DIR)/%.nwa
 
 $(BUILD_DIR)/doomWorks.nwa: $(call object_for,$(src)) $(BUILD_DIR)/icon.o
 	@echo "LD      $@"
-	$(Q) $(CC) $(CPPFLAGS) $(LDFLAGS) $^ -o $@
+	$(Q) $(CC) $^ -o $@ $(CPPFLAGS) $(LDFLAGS)
 
 $(addprefix $(BUILD_DIR)/,%.o): %.cpp | $(BUILD_DIR)
 	@echo "CXX     $^"
-	$(Q) $(CXX) $(CPPFLAGS) $(SFLAGS) -c $^ -o $@
+	$(Q) $(CXX) -c $^ -o $@ $(CPPFLAGS) $(SFLAGS)
 
 $(BUILD_DIR)/icon.o: src/icon.png
 	@echo "ICON    $<"

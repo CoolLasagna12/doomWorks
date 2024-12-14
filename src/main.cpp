@@ -12,6 +12,10 @@ int main(int argc, char *argv[])
     bool running = true;
 
     Player player;
+
+    EADK::Display::drawString("doomWorks 0.0.1", EADK::Point{ 10, 0 }, false, White, Black);
+
+    EADK::Display::drawString("inDev version - Made by RockingCha1r", EADK::Point{ 10, 20 }, false, White, Black);
     
     while (running)
     {
