@@ -1,10 +1,11 @@
 #include "player.h"
 #include "palette.h"
 #include "math.h"
+#include "raycasting.h"
 
 Player::Player() :
-  p_x(EADK::Screen::Width / 2),
-  p_y(EADK::Screen::Height - Display::CommonVerticalMargin)
+  playerX(2),
+  playerY(2)
 {
   draw(Yellow);
 }
@@ -20,11 +21,13 @@ void Player::turn(float deg) {
 void Player::move(int move) {
   draw(Black);
   Math math_obj;
-  playerX += move * math_obj.sinus(direction);
+  playerX += move * math_obj.sinus(direction, false);
   playerY -= move * math_obj.cosinus(direction);
-  playerX = playerX <= k_xLowerBound ? k_xLowerBound : p_x;
-  playerY = playerY <= k_yLowerBound ? k_yLowerBound : p_y;
-  playerX = playerX >= k_xUpperBound ? k_xUpperBound : p_x;
-  playerY = playerY >= k_yUpperBound ? k_yUpperBound : p_y;
+  playerX = playerX <= k_xLowerBound ? k_xLowerBound : playerX;
+  playerY = playerY <= k_yLowerBound ? k_yLowerBound : playerY;
+  playerX = playerX >= k_xUpperBound ? k_xUpperBound : playerX;
+  playerY = playerY >= k_yUpperBound ? k_yUpperBound : playerY;
   draw(Yellow);
+  Raycasting raycasting_obj;
+  raycasting_obj.changePosition(int(playerX), int(playerY));
 }

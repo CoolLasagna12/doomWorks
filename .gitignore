@@ -31,5 +31,5 @@
 *.out
 *.app
 
-
+# Do not add vs code files
 *.vs

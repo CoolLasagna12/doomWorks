@@ -3,19 +3,18 @@
 #include "palette.h"
 #include "eadk_vars.h"
 #include "player.h"
-#include <stdbool.h>
 
 int main(int argc, char *argv[])
 {
+    Raycasting raycasting_obj;
+
+    raycasting_obj.Raycast();
+
     EADK::Display::pushRectUniform(EADK::Screen::Rect, Black);
 
     bool running = true;
 
     Player player;
-
-    EADK::Display::drawString("doomWorks 0.0.1", EADK::Point{ 10, 0 }, false, White, Black);
-
-    EADK::Display::drawString("inDev version - Made by RockingCha1r", EADK::Point{ 10, 20 }, false, White, Black);
     
     while (running)
     {
@@ -34,6 +33,6 @@ int main(int argc, char *argv[])
         if (kbdState.keyDown(EADK::Keyboard::Key::Right)) {
             player.turn(-Player::k_turn_step);
         }
-        
     }
+    return 0;
 }

@@ -12,8 +12,8 @@ public:
   float playerX;
   float playerY;
   void move(int move);
-  static constexpr int k_step = 1;
-  static constexpr float k_turn_step = 0.01;
+  static constexpr int k_step = 5;
+  static constexpr float k_turn_step = 5;
   float direction = 0.0;
   void turn(float deg);
 private:

@@ -35,6 +35,38 @@ float Math::sinus(float x, bool cos = false) {
     return sinus;
 }
 
+float Math::sqrt(float x) {
+    if (x < 0) {
+        return -1;
+    }
+    float guess = x / 2.0;
+    float epsilon = 0.01;
+    float diff = 1;
+
+    while(diff > epsilon) {
+        float new_guess = (guess + x / guess) / 2.0;
+        diff = (new_guess - guess > 0) ? (new_guess - guess) : (guess - new_guess);
+        guess = new_guess;
+    }
+    return guess;
+}
+
+float Math::pow(float number, int exponent) {
+    double result = 1.0;
+    bool negative = false;
+    if (exponent < 0) {
+        negative = true;
+        exponent = -exponent;
+    }
+    for (int i = 1; i <= exponent; i++) {
+        result *= number;
+    }
+    if (negative) {
+        return 1.0 / result;
+    }
+    return result;
+}
+
 float Math::cosinus(float x) {
-    return sinus(x, true)
+    return sinus(x, true);
 }

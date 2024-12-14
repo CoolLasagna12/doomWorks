@@ -15,6 +15,7 @@ src = $(addprefix src/,\
   eadk_vars.cpp \
   player.cpp \
   math.cpp \
+  raycasting.h \
 )
 
 
