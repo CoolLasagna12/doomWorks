@@ -3,6 +3,7 @@
 #include "palette.h"
 #include "eadk_vars.h"
 #include "player.h"
+#include "raycasting.h"
 
 int main(int argc, char *argv[])
 {
@@ -22,16 +23,22 @@ int main(int argc, char *argv[])
         running = !kbdState.keyDown(EADK::Keyboard::Key::Home);
         EADK::Timing::msleep(16);
         if (kbdState.keyDown(EADK::Keyboard::Key::Up)) {
-            player.move(-Player::k_step);
+            player.move(0,-Player::k_step);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Down)) {
-            player.move(Player::k_step);
+            player.move(0,Player::k_step);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Left)) {
-            player.turn(Player::k_turn_step);
+            player.move(-Player::k_step,0);
         }
         if (kbdState.keyDown(EADK::Keyboard::Key::Right)) {
-            player.turn(-Player::k_turn_step);
+            player.move(Player::k_step,0);
+        }
+        if (kbdState.keyDown(EADK::Keyboard::Key::Back)) {
+            player.turn(Player::k_step);
+        }
+        if (kbdState.keyDown(EADK::Keyboard::Key::OK)) {
+            player.turn(-Player::k_step);
         }
     }
     return 0;
