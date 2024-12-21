@@ -9,6 +9,7 @@
   class Player {
 public:
   Player();
+  void draw(const EADK::Color color);
   float playerX;
   float playerY;
   void move(int x, int y);

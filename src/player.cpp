@@ -16,6 +16,10 @@ void Player::turn(float deg) {
 	raycasting_obj.changePosition(int(playerX), int(playerY), direction);
 }
 
+void Player::draw(const EADK::Color color) {
+	EADK::Display::pushRectUniform(EADK::Rect(playerX -10, playerY - 10, 20, 20), color);
+}
+
 void Player::move(int x, int y) {
   playerX += x;
   playerY += y;
@@ -25,4 +29,5 @@ void Player::move(int x, int y) {
   playerY = playerY >= k_yUpperBound ? k_yUpperBound : playerY;
   Raycasting raycasting_obj;
   raycasting_obj.changePosition(int(playerX), int(playerY), direction);
+  draw(Red);
 }

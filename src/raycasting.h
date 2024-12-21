@@ -17,6 +17,7 @@ private:
 public:
     void changePosition(int x, int y, int rotation);
     void Raycast();
+    void Representation();
 };
 
 #endif
