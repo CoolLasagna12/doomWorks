@@ -7,13 +7,13 @@ const float PI = 3.14159265359f;
 
 float playerX = 0.0f;
 float playerY = 0.0f;
-int playerDirection = 0;
+float playerDirection = 0.0f;
 
-float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
+float FOV = 0.5f; //FOV doit ï¿½tre ï¿½gal ï¿½ x/180 oï¿½ x reprï¿½sente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrï¿½s
 
-void Raycasting::changePosition(int x, int y, int rotation) {
-    playerX = x * MAP_WIDTH / EADK::Screen::Width;
-    playerY = y * MAP_HEIGHT / EADK::Screen::Height;
+void Raycasting::changePosition(float x, float y, float rotation) {
+    playerX = x * float(MAP_WIDTH) / float(EADK::Screen::Width);
+    playerY = y * float(MAP_HEIGHT) / float(EADK::Screen::Height);
     playerDirection = rotation;
     Raycast();
 }
@@ -36,7 +36,7 @@ bool Raycasting::checkWall(int x, int y) {
 void Raycasting::Raycast() {
     Math math_obj;
     for (int x = 0; x < EADK::Screen::Width; x++) {
-        float vision = ((x * 2) / EADK::Screen::Width) - 1;
+        float vision = ((x * 2.0f) / EADK::Screen::Width) - 1;
         float rayx = playerX;
         float rayy = playerY;
         int count = 0;

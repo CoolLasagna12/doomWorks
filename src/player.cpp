@@ -28,6 +28,6 @@ void Player::move(int x, int y) {
   playerX = playerX >= k_xUpperBound ? k_xUpperBound : playerX;
   playerY = playerY >= k_yUpperBound ? k_yUpperBound : playerY;
   Raycasting raycasting_obj;
-  raycasting_obj.changePosition(int(playerX), int(playerY), direction);
+  raycasting_obj.changePosition(playerX, playerY, direction);
   draw(Red);
 }

@@ -15,7 +15,7 @@ class Raycasting {
 private:
     bool checkWall(int x, int y);
 public:
-    void changePosition(int x, int y, int rotation);
+    void changePosition(float x, float y, float rotation);
     void Raycast();
     void Representation();
 };
