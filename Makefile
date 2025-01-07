@@ -16,6 +16,7 @@ src = $(addprefix src/,\
   player.cpp \
   math.cpp \
   raycasting.h \
+  menu.h \
 )
 
 

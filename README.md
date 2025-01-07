@@ -12,7 +12,7 @@ At this day we still can't make Doom run on a calculator. I found out how to pla
 
 ❌ Ennemies AI and Sprites
 
-❌ Main Menu
+▶️ Main Menu
 
 ❌ HUD
 

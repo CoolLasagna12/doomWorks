@@ -1,6 +1,5 @@
 #include "player.h"
 #include "palette.h"
-#include "math.h"
 #include "raycasting.h"
 
 Player::Player() :

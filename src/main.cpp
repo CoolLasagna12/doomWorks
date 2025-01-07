@@ -4,14 +4,20 @@
 #include "eadk_vars.h"
 #include "player.h"
 #include "raycasting.h"
+#include "menu.h"
 
 int main(int argc, char *argv[])
 {
+    // TODO :
+    // Menu du jeu
+
+    drawMenu();
+    
+    EADK::Timing::msleep(1000);
+
     Raycasting raycasting_obj;
 
     raycasting_obj.Raycast();
-
-    EADK::Display::pushRectUniform(EADK::Screen::Rect, Black);
 
     bool running = true;
 

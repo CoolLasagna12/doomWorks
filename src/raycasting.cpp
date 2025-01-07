@@ -9,7 +9,7 @@ float playerX = 0.0f;
 float playerY = 0.0f;
 float playerDirection = 0.0f;
 
-float FOV = 0.5f; //FOV doit �tre �gal � x/180 o� x repr�sente le FOV, ainsi, pour 0.5f, le FOV est de 90 degr�s
+float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
 
 void Raycasting::changePosition(float x, float y, float rotation) {
     playerX = x * float(MAP_WIDTH) / float(EADK::Screen::Width);
@@ -23,7 +23,7 @@ int worldMap[MAP_HEIGHT][MAP_WIDTH] = {
     {1, 0, 0, 0, 1},
     {1, 0, 0, 0, 1},
     {1, 0, 0, 0, 1},
-    {1, 1, 1, 1, 1}
+    {1, 1, 0, 1, 1}
 };
 
 bool Raycasting::checkWall(int x, int y) {
@@ -44,7 +44,7 @@ void Raycasting::Raycast() {
         while (touched == false && count < 20) {
             count += 1;
             rayx += math_obj.sinus(vision * 90.0f * FOV + playerDirection, false);
-            rayy += math_obj.cosinus(vision * 90.0f * FOV + playerDirection);
+            rayy -= math_obj.cosinus(vision * 90.0f * FOV + playerDirection);
             if (checkWall(rayx, rayy)) {
                 touched = true;
             }
