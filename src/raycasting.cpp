@@ -1,8 +1,3 @@
-// A tester
-// faire que les rayons soient 10* moins rapides
-// refaire checkwall, et vérifier si ça ne renvoie pas true au premier lancer ? (enlever un mur de la map, et voir ce que ça change)
-// vérifier les calculs de distance
-
 #include "raycasting.h"
 #include "palette.h"
 #include "player.h"
@@ -15,20 +10,26 @@ float playerY = 0.0f;
 float playerDirection = 0.0f;
 
 float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
+float tileSize = 5.0f; // Taille d'une tile. Plus le nombre est grand, plus elle est petite. 5, c'est pas mal
 
 void Raycasting::changePosition(float x, float y, float rotation) {
-    playerX = x * float(MAP_WIDTH) / float(EADK::Screen::Width);
-    playerY = y * float(MAP_HEIGHT) / float(EADK::Screen::Height);
+    playerX = x / float(EADK::Screen::Width) * tileSize;
+    playerY = y / float(EADK::Screen::Height) * tileSize;
     playerDirection = rotation;
     Raycast();
 }
 
 int worldMap[MAP_HEIGHT][MAP_WIDTH] = {
-    {1, 1, 1, 1, 1},
-    {1, 0, 0, 1, 1},
-    {1, 0, 0, 0, 1},
-    {1, 0, 0, 0, 1},
-    {1, 1, 1, 1, 1}
+    {1, 1, 1, 1, 1, 0, 0},
+    {1, 0, 0, 0, 1, 1, 1},
+    {1, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 1, 0, 1},
+    {1, 1, 0, 1, 1, 0, 1},
+    {1, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 1},
+    {1, 0, 0, 0, 0, 0, 1},
+    {1, 1, 1, 1, 1, 1, 1}
 };
 
 bool Raycasting::checkWall(int x, int y) {
@@ -48,10 +49,10 @@ void Raycasting::Raycast() {
         float rayy = playerY;
         int count = 0;
         bool touched = false;
-        while (touched == false && count < 10000) {
+        while (touched == false && count < 100) {
             count += 1;
-            rayx += math_obj.sinus(vision * 90.0f * FOV + playerDirection, false, true);
-            rayy -= math_obj.cosinus(vision * 90.0f * FOV + playerDirection, true);
+            rayx += math_obj.sinus(vision * 90.0f * FOV + playerDirection, false) * 0.1f * (math_obj.pow(2,(count * 0.01)));
+            rayy -= math_obj.cosinus(vision * 90.0f * FOV + playerDirection) * 0.1f * (math_obj.pow(2, (count * 0.01)));
             if (checkWall(rayx, rayy)) {
                 touched = true;
             }

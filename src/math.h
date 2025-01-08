@@ -5,8 +5,8 @@ class Math {
 private:
     float normalize(float angle);
 public:
-    float sinus(float x, bool cos, bool multiply);
-    float cosinus(float x, bool multiply);
+    float sinus(float x, bool cos);
+    float cosinus(float x);
     float sqrt(float x);
     float pow(float number, int exponent);
 };
