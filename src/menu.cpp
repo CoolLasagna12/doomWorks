@@ -1,10 +1,51 @@
 #include "menu.h"
 #include "palette.h"
 
+void newChoice(int actualChoice) {
+    if (actualChoice % 2 == 0) {
+        EADK::Display::drawString("> Play", EADK::Point{ 115, 130 }, true, White, Black);
+        EADK::Display::drawString("Options", EADK::Point{ 115, 150 }, true, White, Black);
+        EADK::Display::pushRectUniform(EADK::Rect(185, 150, 20, 20), Black);
+    }
+    else {
+        EADK::Display::drawString("Play", EADK::Point{ 115, 130 }, true, White, Black);
+        EADK::Display::drawString("> Options", EADK::Point{ 115, 150 }, true, White, Black);
+        EADK::Display::pushRectUniform(EADK::Rect(155, 130, 20, 20), Black);
+    }
+}
+
 void drawMenu() {
 	EADK::Display::pushRectUniform(EADK::Rect(0, 0, EADK::Screen::Width, EADK::Screen::Height), Black);
-	EADK::Display::drawString("Welcome to DoomWorks v0.0.1", EADK::Point{ 10, 10 }, false, White, Black);
-	EADK::Display::drawString("Made by RockingCha1r", EADK::Point{ 10, 30 }, false, White, Black);
-	EADK::Display::drawString("This game is currently in development.", EADK::Point{ 10, 50 }, false, White, Black);
-	EADK::Display::drawString("Maybe you should come back later?", EADK::Point{ 10, 70 }, false, White, Black);
+	EADK::Display::drawString("DOOMWORKS", EADK::Point{ 115, 10 }, true, White, Black);
+	EADK::Display::drawString("Made by RockingCha1r", EADK::Point{ 90, 30 }, false, White, Black);
+    EADK::Display::drawString("v0.0.2", EADK::Point{ 278, 225}, false, White, Black);
+
+    EADK::Timing::msleep(500);
+
+    bool waitingInput = true;
+
+    int choice = 0;
+
+    EADK::Display::drawString("> Play", EADK::Point{ 115, 130 }, true, White, Black);
+    EADK::Display::drawString("Options", EADK::Point{ 115, 150 }, true, White, Black);
+
+    while (waitingInput) {
+        EADK::Keyboard::State firstInput = EADK::Keyboard::scan();
+        if (firstInput.keyDown(EADK::Keyboard::Key::Up)) {
+            choice -= 1;
+            newChoice(choice);
+            EADK::Timing::msleep(200);
+        }
+        if (firstInput.keyDown(EADK::Keyboard::Key::Down)) {
+            choice += 1;
+            newChoice(choice);
+            EADK::Timing::msleep(200);
+        }
+        if (firstInput.keyDown(EADK::Keyboard::Key::OK)) {
+            waitingInput = false;
+        }
+        if (firstInput.keyDown(EADK::Keyboard::Key::Home)) {
+            waitingInput = false;
+        }
+    }
 }

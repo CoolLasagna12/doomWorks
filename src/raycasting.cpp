@@ -75,7 +75,4 @@ void Raycasting::Raycast() {
             EADK::Display::pushRectUniform(EADK::Rect(x, 0, 1, EADK::Screen::Height), White);
         }
     }
-    EADK::Display::drawString("doomWorks 0.0.1", EADK::Point{ 10, 0 }, false, Black, White);
-
-    EADK::Display::drawString("inDev version - Made by RockingCha1r", EADK::Point{ 10, 20 }, false, Black, White);
 }

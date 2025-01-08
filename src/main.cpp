@@ -8,22 +8,9 @@
 
 int main(int argc, char *argv[])
 {
-    // TODO :
-    // Menu du jeu
+    // Les petits textes ont l'air de faire 7 pixels, et les grands 10
 
     drawMenu();
-    
-    EADK::Timing::msleep(1000);
-
-    bool waitingInput = true;
-
-    while (waitingInput) {
-        EADK::Keyboard::State firstInput = EADK::Keyboard::scan();
-        if (firstInput.keyDown(EADK::Keyboard::Key::OK)) {
-            waitingInput = false;
-        }
-        EADK::Timing::msleep(2);
-    }
 
     Raycasting raycasting_obj;
 
@@ -37,7 +24,6 @@ int main(int argc, char *argv[])
     {
         EADK::Keyboard::State kbdState = EADK::Keyboard::scan();
         running = !kbdState.keyDown(EADK::Keyboard::Key::Home);
-        EADK::Timing::msleep(16);
         if (kbdState.keyDown(EADK::Keyboard::Key::Up)) {
             player.move(Player::k_step);
         }
