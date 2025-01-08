@@ -25,15 +25,17 @@ void Raycasting::changePosition(float x, float y, float rotation) {
 
 int worldMap[MAP_HEIGHT][MAP_WIDTH] = {
     {1, 1, 1, 1, 1},
+    {1, 0, 0, 1, 1},
     {1, 0, 0, 0, 1},
     {1, 0, 0, 0, 1},
-    {1, 0, 0, 0, 1},
-    {1, 1, 0, 1, 1}
+    {1, 1, 1, 1, 1}
 };
 
 bool Raycasting::checkWall(int x, int y) {
     if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT) {
-        return worldMap[int(y)][int(x)] == 1;
+        if (worldMap[int(y)][int(x)] == 1) {
+            return true;
+        }
     }
     return false;
 };
@@ -46,10 +48,10 @@ void Raycasting::Raycast() {
         float rayy = playerY;
         int count = 0;
         bool touched = false;
-        while (touched == false && count < 20) {
+        while (touched == false && count < 10000) {
             count += 1;
-            rayx += math_obj.sinus(vision * 90.0f * FOV + playerDirection, false);
-            rayy -= math_obj.cosinus(vision * 90.0f * FOV + playerDirection);
+            rayx += math_obj.sinus(vision * 90.0f * FOV + playerDirection, false, true);
+            rayy -= math_obj.cosinus(vision * 90.0f * FOV + playerDirection, true);
             if (checkWall(rayx, rayy)) {
                 touched = true;
             }
@@ -58,10 +60,18 @@ void Raycasting::Raycast() {
             float disX = math_obj.pow((playerX - rayx), 2);
             float disY = math_obj.pow((playerY - rayy), 2);
             float distance = math_obj.sqrt(disX + disY);
-            int nbPixels = int((EADK::Screen::Width - 20) / (distance + 1));
+            int nbPixels = int((EADK::Screen::Height - 20) / (distance + 0.01f));
             EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 - nbPixels / 2, 1, nbPixels), Black);
-            EADK::Display::pushRectUniform(EADK::Rect(x, 0, 1, (EADK::Screen::Height - nbPixels) / 2), White);
-            EADK::Display::pushRectUniform(EADK::Rect(x, (EADK::Screen::Height / 2 + nbPixels / 2), 1, (EADK::Screen::Height - nbPixels) / 2), White);
+            if ((EADK::Screen::Height - nbPixels) / 2 < 0) {
+                EADK::Display::pushRectUniform(EADK::Rect(x, 0, 1, 222), Black);
+            }
+            else {
+                EADK::Display::pushRectUniform(EADK::Rect(x, 0, 1, (EADK::Screen::Height - nbPixels) / 2), White);
+                EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 + nbPixels / 2, 1, (EADK::Screen::Height - nbPixels) / 2), White);
+            }
+        }
+        else {
+            EADK::Display::pushRectUniform(EADK::Rect(x, 0, 1, EADK::Screen::Height), White);
         }
     }
     EADK::Display::drawString("doomWorks 0.0.1", EADK::Point{ 10, 0 }, false, Black, White);

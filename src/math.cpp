@@ -17,7 +17,7 @@ float Math::normalize(float angle) {
     }
     return angle;
 }
-float Math::sinus(float x, bool cos = false) {
+float Math::sinus(float x, bool cos = false, bool multiply = false) {
     const float PI = 3.14159265359f;
     if (cos) {
         x -= 90.0f;
@@ -31,6 +31,9 @@ float Math::sinus(float x, bool cos = false) {
         term *= (x * x) / (i * (i - 1));
         sinus += sign * term;
         sign *= -1;
+    }
+    if (multiply == true) {
+        sinus *= 0.1f;
     }
     return sinus;
 }
@@ -67,6 +70,6 @@ float Math::pow(float number, int exponent) {
     return result;
 }
 
-float Math::cosinus(float x) {
-    return sinus(x, true);
+float Math::cosinus(float x, bool multiply) {
+    return sinus(x, true, multiply);
 }

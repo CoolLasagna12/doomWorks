@@ -3,8 +3,8 @@
 #include "raycasting.h"
 
 Player::Player() :
-	playerX(2),
-	playerY(2)
+	playerX(160),
+	playerY(111)
 {
 
 }
@@ -21,7 +21,7 @@ void Player::draw(const EADK::Color color) {
 
 void Player::move(int x, int y) {
   playerX += x;
-  playerY += y;
+  playerY -= y;
   playerX = playerX <= k_xLowerBound ? k_xLowerBound : playerX;
   playerY = playerY <= k_yLowerBound ? k_yLowerBound : playerY;
   playerX = playerX >= k_xUpperBound ? k_xUpperBound : playerX;

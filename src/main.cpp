@@ -15,6 +15,16 @@ int main(int argc, char *argv[])
     
     EADK::Timing::msleep(1000);
 
+    bool waitingInput = true;
+
+    while (waitingInput) {
+        EADK::Keyboard::State firstInput = EADK::Keyboard::scan();
+        if (firstInput.keyDown(EADK::Keyboard::Key::OK)) {
+            waitingInput = false;
+        }
+        EADK::Timing::msleep(2);
+    }
+
     Raycasting raycasting_obj;
 
     raycasting_obj.Raycast();
