@@ -1,3 +1,8 @@
+// A tester
+// faire que les rayons soient 10* moins rapides
+// refaire checkwall, et vérifier si ça ne renvoie pas true au premier lancer ? (enlever un mur de la map, et voir ce que ça change)
+// vérifier les calculs de distance
+
 #include "raycasting.h"
 #include "palette.h"
 #include "player.h"
