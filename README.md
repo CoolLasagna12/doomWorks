@@ -8,7 +8,7 @@ At this day we still can't make Doom run on a calculator. I found out how to pla
 
 ❌ Map and walls texturing
 
-▶️ Better player movements and collision
+✅ Better player movements and collision
 
 ❌ Ennemies AI and Sprites
 
