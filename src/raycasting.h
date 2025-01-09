@@ -2,19 +2,13 @@
 #define RAYCASTING_H
 
 #include "player.h"
-#include "display.h"
 #include "eadkpp.h"
-
-
-const int MAP_WIDTH = 7;
-const int MAP_HEIGHT = 10;
-
-extern int worldMap[MAP_HEIGHT][MAP_WIDTH];
 
 class Raycasting {
 private:
     bool checkWall(int x, int y);
 public:
+    static constexpr float tileSize = 5.0f; // Taille d'une tile. Plus le nombre est grand, plus elle est petite. 5, c'est pas mal
     void changePosition(float x, float y, float rotation);
     void Raycast();
 };

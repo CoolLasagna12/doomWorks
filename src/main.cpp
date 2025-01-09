@@ -1,4 +1,3 @@
-#include "display.h"
 #include "eadkpp.h"
 #include "palette.h"
 #include "eadk_vars.h"
