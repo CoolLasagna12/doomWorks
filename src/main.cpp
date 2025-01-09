@@ -1,3 +1,5 @@
+//Enlever display, ça sert à rien
+
 #include "display.h"
 #include "eadkpp.h"
 #include "palette.h"
