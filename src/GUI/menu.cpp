@@ -20,14 +20,14 @@ void drawMenu() {
 	EADK::Display::drawString("Made by RockingCha1r", EADK::Point{ 90, 30 }, false, White, Black);
     EADK::Display::drawString("v0.0.2", EADK::Point{ 278, 225}, false, White, Black);
 
-    EADK::Timing::msleep(500);
-
     bool waitingInput = true;
 
     int choice = 0;
 
     EADK::Display::drawString("> Play", EADK::Point{ 115, 130 }, true, White, Black);
     EADK::Display::drawString("Options", EADK::Point{ 115, 150 }, true, White, Black);
+
+    EADK::Timing::msleep(200);
 
     while (waitingInput) {
         EADK::Keyboard::State firstInput = EADK::Keyboard::scan();

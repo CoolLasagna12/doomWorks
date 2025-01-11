@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
     bool running = true;
 
     Player player;
-    
+
     while (running)
     {
         EADK::Keyboard::State kbdState = EADK::Keyboard::scan();

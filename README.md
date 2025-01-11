@@ -10,7 +10,7 @@ At this day we still can't make Doom run on a calculator. I found out how to pla
 
 ▶️ Main Menu
 
-🔜 Adding textures
+▶️ Adding textures
 
 ❌ Ennemies and guns
 

@@ -3,6 +3,7 @@
 #include "../CHARACTERS/player.h"
 #include "../LIBS/math.h"
 #include "map.h"
+#include "../TEXTURES/textures.h"
 
 const float PI = 3.14159265359f;
 
@@ -30,6 +31,7 @@ bool Raycasting::checkWall(int x, int y) {
 
 void Raycasting::Raycast() {
     Math math_obj;
+    int drawX = 0;
     for (int x = 0; x < EADK::Screen::Width/2; x++) {
         x = x * 2;
         float vision = ((x * 2.0f) / EADK::Screen::Width) - 1;
@@ -50,14 +52,23 @@ void Raycasting::Raycast() {
             float disY = math_obj.pow((playerY - rayy), 2);
             float distance = math_obj.sqrt(disX + disY);
             int nbPixels = int((EADK::Screen::Height - 20) / (distance + 0.01f));
-            EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 - nbPixels / 2, 2, nbPixels), Black);
             if ((EADK::Screen::Height - nbPixels) / 2 < 0) {
-                EADK::Display::pushRectUniform(EADK::Rect(x, 0, 2, EADK::Screen::Height), Black);
+                nbPixels = 240;
             }
-            else {
-                EADK::Display::pushRectUniform(EADK::Rect(x, 0, 2, (EADK::Screen::Height - nbPixels) / 2), White);
-                EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 + nbPixels / 2, 2, (EADK::Screen::Height - nbPixels) / 2), White);
+            //EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 - nbPixels / 2, 2, nbPixels), Black);
+            EADK::Display::pushRectUniform(EADK::Rect(x, 0, 2, (EADK::Screen::Height - nbPixels) / 2), White);
+            EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 + nbPixels / 2, 2, (EADK::Screen::Height - nbPixels) / 2), Grey);
+
+
+            int drawY = 0;
+            for (int i = 0; i < nbPixels; ++i) {
+                int pixelSize = nbPixels / 16;
+                int pixelToDraw = drawY / pixelSize;
+                int pixelNumber = pixelToDraw * 16;
+                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height /2 - nbPixels / 2 + drawY, 2, 1), wallTexture[pixelNumber + (drawX / pixelSize) % 16]);
+                drawY++;
             }
+            drawX++;
         }
         else {
             EADK::Display::pushRectUniform(EADK::Rect(x, 0, 2, EADK::Screen::Height), White);
