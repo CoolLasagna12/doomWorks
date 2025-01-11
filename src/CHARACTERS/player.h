@@ -1,7 +1,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include "eadkpp.h"
+#include "../EADK/eadkpp.h"
 
 class Player {
 public:

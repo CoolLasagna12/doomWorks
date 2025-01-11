@@ -1,7 +1,7 @@
 #include "raycasting.h"
-#include "palette.h"
-#include "player.h"
-#include "math.h"
+#include "../EADK/palette.h"
+#include "../CHARACTERS/player.h"
+#include "../LIBS/math.h"
 #include "map.h"
 
 const float PI = 3.14159265359f;

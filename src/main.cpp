@@ -1,13 +1,15 @@
-#include "eadkpp.h"
-#include "palette.h"
-#include "eadk_vars.h"
-#include "player.h"
-#include "raycasting.h"
-#include "menu.h"
+#include "EADK/eadkpp.h"
+#include "EADK/palette.h"
+#include "EADK/eadk_vars.h"
+#include "CHARACTERS/player.h"
+#include "RAYCASTING/raycasting.h"
+#include "GUI/menu.h"
 
 int main(int argc, char *argv[])
 {
-    // Les petits textes ont l'air de faire 7 pixels, et les grands 10
+    // Petite police : 12x7
+    // Grande police : 16x10
+    // Merci yaya
 
     drawMenu();
 

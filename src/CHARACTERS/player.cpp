@@ -1,7 +1,7 @@
 #include "player.h"
-#include "raycasting.h"
-#include "math.h"
-#include "map.h"
+#include "../RAYCASTING/raycasting.h"
+#include "../LIBS/math.h"
+#include "../RAYCASTING/map.h"
 
 Player::Player() :
 	playerX(160),

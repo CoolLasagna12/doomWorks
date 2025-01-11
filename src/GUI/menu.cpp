@@ -1,5 +1,5 @@
 #include "menu.h"
-#include "palette.h"
+#include "../EADK/palette.h"
 
 void newChoice(int actualChoice) {
     if (actualChoice % 2 == 0) {

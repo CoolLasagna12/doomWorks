@@ -1,8 +1,8 @@
 #ifndef RAYCASTING_H
 #define RAYCASTING_H
 
-#include "player.h"
-#include "eadkpp.h"
+#include "../CHARACTERS/player.h"
+#include "../EADK/eadkpp.h"
 
 class Raycasting {
 private:

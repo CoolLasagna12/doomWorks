@@ -12,13 +12,24 @@ endef
 
 src = $(addprefix src/,\
   main.cpp \
+)
+src += $(addprefix src/EADK/,\
   eadk_vars.cpp \
+)
+src += $(addprefix src/CHARACTERS/,\
   player.cpp \
+)
+src += $(addprefix src/LIBS/,\
   math.cpp \
-  raycasting.h \
-  menu.h \
+)
+src += $(addprefix src/RAYCASTING/,\
+  raycasting.cpp \
+)
+src += $(addprefix src/GUI/,\
+  menu.cpp \
 )
 
+DIRS := $(sort $(dir $(call object_for,$(src))))
 
 CPPFLAGS = -std=c++11 -fno-exceptions
 CPPFLAGS += -Os -Wall
@@ -29,7 +40,6 @@ LDFLAGS = -Wl,--relocatable
 LDFLAGS += -nostartfiles
 LDFLAGS += --specs=nano.specs
 LDFLAGS += -lm
-
 
 ifeq ($(LINK_GC),1)
 CPPFLAGS += -fdata-sections -ffunction-sections
@@ -60,7 +70,7 @@ $(BUILD_DIR)/doomWorks.nwa: $(call object_for,$(src)) $(BUILD_DIR)/icon.o
 	@echo "LD      $@"
 	$(Q) $(CC) $^ -o $@ $(CPPFLAGS) $(LDFLAGS)
 
-$(addprefix $(BUILD_DIR)/,%.o): %.cpp | $(BUILD_DIR)
+$(addprefix $(BUILD_DIR)/,%.o): %.cpp | $(DIRS)
 	@echo "CXX     $^"
 	$(Q) $(CXX) -c $^ -o $@ $(CPPFLAGS) $(SFLAGS)
 
@@ -68,9 +78,9 @@ $(BUILD_DIR)/icon.o: src/icon.png
 	@echo "ICON    $<"
 	$(Q) $(NWLINK) png-icon-o $< $@
 
-.PRECIOUS: $(BUILD_DIR)
-$(BUILD_DIR):
-	$(Q) mkdir -p $@/src
+.PRECIOUS: $(BUILD_DIR) $(DIRS)
+$(DIRS):
+	$(Q) mkdir -p $@
 
 .PHONY: clean
 clean:
