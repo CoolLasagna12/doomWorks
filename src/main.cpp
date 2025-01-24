@@ -7,6 +7,9 @@
 
 int main(int argc, char *argv[])
 {
+    // Pour tester le raycasting : https://www.programiz.com/online-compiler/5EGvq2dRaktN6
+
+
     // Petite police : 12x7
     // Grande police : 16x10
     // Merci yaya
