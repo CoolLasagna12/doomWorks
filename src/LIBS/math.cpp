@@ -1,7 +1,8 @@
 #include "math.h"
 
+const float PI = 3.14159265359f;
+
 float Math::normalize(float angle) {
-    const float PI = 3.14159265359f;
     const float TWO_PI = 2.0f * PI;
     while (angle > TWO_PI) {
         angle -= TWO_PI;
@@ -18,7 +19,6 @@ float Math::normalize(float angle) {
     return angle;
 }
 float Math::sinus(float x, bool cos = false) {
-    const float PI = 3.14159265359f;
     if (cos) {
         x -= 90.0f;
     }
@@ -51,6 +51,16 @@ float Math::sqrt(float x) {
     return guess;
 }
 
+int Math::floor(float x) {
+    if (x == (int)x) {
+        return x;
+    }
+    if (x > 0) {
+        return (int)x;
+    }
+    return (int)x - 1;
+}
+
 float Math::pow(float number, int exponent) {
     double result = 1.0;
     bool negative = false;
@@ -65,6 +75,13 @@ float Math::pow(float number, int exponent) {
         return 1.0 / result;
     }
     return result;
+}
+
+float Math::abs(float x) {
+    if (x < 0) {
+        x = -1 * x;
+    }
+    return x;
 }
 
 float Math::cosinus(float x) {

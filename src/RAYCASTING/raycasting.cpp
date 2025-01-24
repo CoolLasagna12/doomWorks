@@ -11,7 +11,7 @@ float playerX = 2.5f;
 float playerY = 2.5f;
 float playerDirection = 0.0f;
 
-float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
+const float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
 
 void Raycasting::changePosition(float x, float y, float rotation) {
     playerX = x / float(EADK::Screen::Width) * tileSize;
@@ -39,12 +39,26 @@ void Raycasting::Raycast() {
         float rayy = playerY;
         int count = 0;
         bool touched = false;
+
+        float hitPosition = 0.0f;
+
+        float dx = math_obj.sinus(vision * 90.0f * FOV + playerDirection, false);
+        float dy = -math_obj.cosinus(vision * 90.0f * FOV + playerDirection);
+        float power = math_obj.pow(2, (count * 0.01));
+
         while (touched == false && count < 200) {
             count += 1;
-            rayx += math_obj.sinus(vision * 90.0f * FOV + playerDirection, false) * 0.05f * (math_obj.pow(2,(count * 0.01)));
-            rayy -= math_obj.cosinus(vision * 90.0f * FOV + playerDirection) * 0.05f * (math_obj.pow(2, (count * 0.01)));
+            rayx += dx * 0.05f * power;
+            rayy += dy * 0.05f * power;
             if (checkWall(rayx, rayy)) {
                 touched = true;
+                if (math_obj.abs(dx) > math_obj.abs(dy)) {
+                    hitPosition = rayy - math_obj.floor(rayy);
+                }
+                else {
+                    hitPosition = rayx - math_obj.floor(rayx);
+                }
+
             }
         }
         if (touched == true) {
@@ -55,18 +69,14 @@ void Raycasting::Raycast() {
             if ((EADK::Screen::Height - nbPixels) / 2 < 0) {
                 nbPixels = 240;
             }
-            //EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 - nbPixels / 2, 2, nbPixels), Black);
             EADK::Display::pushRectUniform(EADK::Rect(x, 0, 2, (EADK::Screen::Height - nbPixels) / 2), White);
             EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 + nbPixels / 2, 2, (EADK::Screen::Height - nbPixels) / 2), Grey);
 
+            int pixelSize = nbPixels / 16;
+            int pixelNb = hitPosition * 16;
 
-            int drawY = 0;
-            for (int i = 0; i < nbPixels; ++i) {
-                int pixelSize = nbPixels / 16;
-                int pixelToDraw = drawY / pixelSize;
-                int pixelNumber = pixelToDraw * 16;
-                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height /2 - nbPixels / 2 + drawY, 2, 1), wallTexture[pixelNumber + (drawX / pixelSize) % 16]);
-                drawY++;
+            for (int i = 0; i < wallHeight; ++i) {
+                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height / 2 - nbPixels / 2 + i * pixelSize, 2, pixelSize), wallTexture[i * 16 + pixelNb]);
             }
             drawX++;
         }
