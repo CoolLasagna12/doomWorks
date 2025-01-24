@@ -18,7 +18,7 @@ void drawMenu() {
 	EADK::Display::pushRectUniform(EADK::Rect(0, 0, EADK::Screen::Width, EADK::Screen::Height), Black);
 	EADK::Display::drawString("DOOMWORKS", EADK::Point{ 115, 10 }, true, White, Black);
 	EADK::Display::drawString("Made by RockingCha1r", EADK::Point{ 90, 30 }, false, White, Black);
-    EADK::Display::drawString("v0.0.3", EADK::Point{ 278, 225}, false, White, Black);
+    EADK::Display::drawString("v0.0.3", EADK::Point{ 278, 230}, false, White, Black);
 
     bool waitingInput = true;
 

@@ -72,11 +72,16 @@ void Raycasting::Raycast() {
             EADK::Display::pushRectUniform(EADK::Rect(x, 0, 2, (EADK::Screen::Height - nbPixels) / 2), White);
             EADK::Display::pushRectUniform(EADK::Rect(x, EADK::Screen::Height / 2 + nbPixels / 2, 2, (EADK::Screen::Height - nbPixels) / 2), Grey);
 
-            int pixelSize = nbPixels / 16;
+            int pixelSize;
             int pixelNb = hitPosition * 16;
+            int remainingPixels = nbPixels;
 
             for (int i = 0; i < wallHeight; ++i) {
-                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height / 2 - nbPixels / 2 + i * pixelSize, 2, pixelSize), wallTexture[i * 16 + pixelNb]);
+                if (wallHeight - i > 0) {
+                    pixelSize = remainingPixels / (wallHeight - i);
+                }
+                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height / 2 - nbPixels / 2 + nbPixels - remainingPixels, 2, pixelSize), wallTexture[i * 16 + pixelNb]);
+                remainingPixels -= pixelSize;
             }
             drawX++;
         }
