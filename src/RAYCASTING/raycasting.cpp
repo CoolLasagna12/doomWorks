@@ -53,11 +53,21 @@ void Raycasting::Raycast() {
             if (checkWall(rayx, rayy)) {
                 touched = true;
                 if (math_obj.abs(rayx - math_obj.floor(rayx)) < math_obj.abs(rayy - math_obj.floor(rayy))) { // SUD // EST
-                    hitPosition = rayy - math_obj.floor(rayy);
+                    if (dx > 0.5) { // est
+                        hitPosition = rayy - math_obj.floor(rayy);
+                    }
+                    else { // sud
+                        hitPosition = rayx - math_obj.floor(rayx);
+                    }
                 }
-                else { // NORD / OUEST 
+                else { 
+                    if (dy > 0.5) { // nord
+                        hitPosition = rayx - math_obj.floor(rayx);
+                    }
+                    else { // ouest
+                        hitPosition = rayy - math_obj.floor(rayy);
+                    }
 
-                    hitPosition = rayx - math_obj.floor(rayx);
                 }
 
             }
