@@ -44,38 +44,71 @@ void Raycasting::Raycast() {
 
         float dx = math_obj.sinus(vision * 90.0f * FOV + playerDirection, false);
         float dy = -math_obj.cosinus(vision * 90.0f * FOV + playerDirection);
-        float power = math_obj.pow(2, (count * 0.01));
+        int mapX = int(math_obj.floor(rayx));
+        int mapY = int(math_obj.floor(rayy));
 
-        while (touched == false && count < 200) {
-            count += 1;
-            rayx += dx * 0.05f * power;
-            rayy += dy * 0.05f * power;
-            if (checkWall(rayx, rayy)) {
+        float deltaDistX = (dx == 0) ? 1e30f : math_obj.abs(1.0f / dx);
+        float deltaDistY = (dy == 0) ? 1e30f : math_obj.abs(1.0f / dy);
+
+        int stepX, stepY;
+        float sideDistX, sideDistY; 
+
+        if (dx < 0) {
+            stepX = -1;
+            sideDistX = (rayx - mapX) * deltaDistX;
+        }
+        else {
+            stepX = 1;
+            sideDistX = (mapX + 1.0f - rayx) * deltaDistX;
+        }
+
+        if (dy < 0) {
+            stepY = -1;
+            sideDistY = (rayy - mapY) * deltaDistY;
+        }
+        else {
+            stepY = 1;
+            sideDistY = (mapY + 1.0f - rayy) * deltaDistY;
+        }
+
+        int side = 0;
+        float distance = 0.0f;
+
+        while (!touched && count < 200) {
+            if (sideDistX < sideDistY) {
+                sideDistX += deltaDistX;
+                mapX += stepX;
+                side = 0;
+            }
+            else {
+                sideDistY += deltaDistY;
+                mapY += stepY;
+                side = 1;
+            }
+            count++;
+
+            if (checkWall(mapX, mapY)) {
                 touched = true;
-                if (math_obj.abs(rayx - math_obj.floor(rayx)) < math_obj.abs(rayy - math_obj.floor(rayy))) { // SUD // EST
-                    if (dx > 0.5) { // est
-                        hitPosition = rayy - math_obj.floor(rayy);
-                    }
-                    else { // sud
-                        hitPosition = rayx - math_obj.floor(rayx);
-                    }
-                }
-                else { 
-                    if (dy > 0.5) { // nord
-                        hitPosition = rayx - math_obj.floor(rayx);
-                    }
-                    else { // ouest
-                        hitPosition = rayy - math_obj.floor(rayy);
-                    }
 
+                float perpWallDist;
+                if (side == 0) {
+                    perpWallDist = (mapX - rayx + (1 - stepX) / 2.0f) / dx;
                 }
+                else {
+                    perpWallDist = (mapY - rayy + (1 - stepY) / 2.0f) / dy;
+                }
+                distance = perpWallDist;
 
+                if (side == 0)
+                    hitPosition = rayy + perpWallDist * dy;
+                else
+                    hitPosition = rayx + perpWallDist * dx;
+                hitPosition -= math_obj.floor(hitPosition);
+
+                break;
             }
         }
         if (touched == true) {
-            float disX = math_obj.pow((playerX - rayx), 2);
-            float disY = math_obj.pow((playerY - rayy), 2);
-            float distance = math_obj.sqrt(disX + disY);
             int nbPixels = int((EADK::Screen::Height - 20) / (distance + 0.01f));
             if ((EADK::Screen::Height - nbPixels) / 2 < 0) {
                 nbPixels = 240;
