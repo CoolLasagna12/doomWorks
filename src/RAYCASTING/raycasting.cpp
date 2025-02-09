@@ -99,10 +99,12 @@ void Raycasting::Raycast() {
                 }
                 distance = perpWallDist;
 
-                if (side == 0)
+                if (side == 0) {
                     hitPosition = rayy + perpWallDist * dy;
-                else
+                }
+                else {
                     hitPosition = rayx + perpWallDist * dx;
+                }
                 hitPosition -= math_obj.floor(hitPosition);
 
                 break;
