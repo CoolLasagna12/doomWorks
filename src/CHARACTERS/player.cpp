@@ -12,13 +12,12 @@ Player::Player() :
 
 void Player::turn(float deg) {
     direction += deg;
-    Raycasting raycasting_obj;
-    raycasting_obj.changePosition(int(playerX), int(playerY), direction);
+    changePosition(int(playerX), int(playerY), direction);
 };
 
 bool Player::checkInsideWall(int x, int y) {
-    x = x / float(EADK::Screen::Width) * Raycasting::tileSize;
-    y = y / float(EADK::Screen::Height) * Raycasting::tileSize;
+    x = x / float(EADK::Screen::Width) * tileSize;
+    y = y / float(EADK::Screen::Height) * tileSize;
     if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT) {
         if (worldMap[y][x] == 1) {
             return true;
@@ -28,17 +27,15 @@ bool Player::checkInsideWall(int x, int y) {
 };
 
 void Player::move(int movement) {
-  Math playerMath;
   float lastPlayerX = playerX;
   float lastPlayerY = playerY;
-  playerX += movement * playerMath.sinus(direction, false);
-  playerY -= movement * playerMath.cosinus(direction);
+  playerX += movement * sinus(direction, false);
+  playerY -= movement * cosinus(direction);
   if (checkInsideWall(int(playerX), int(playerY))) {
       playerX = lastPlayerX;
       playerY = lastPlayerY;
   }
   else {
-      Raycasting raycasting_obj;
-      raycasting_obj.changePosition(playerX, playerY, direction);
+      changePosition(playerX, playerY, direction);
   }
 }

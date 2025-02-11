@@ -2,7 +2,7 @@
 
 const float PI = 3.14159265359f;
 
-float Math::normalize(float angle) {
+float normalize(float angle) {
     const float TWO_PI = 2.0f * PI;
     while (angle > TWO_PI) {
         angle -= TWO_PI;
@@ -18,7 +18,7 @@ float Math::normalize(float angle) {
     }
     return angle;
 }
-float Math::sinus(float x, bool cos = false) {
+float sinus(float x, bool cos = false) {
     if (cos) {
         x -= 90.0f;
     }
@@ -35,7 +35,7 @@ float Math::sinus(float x, bool cos = false) {
     return sinus;
 }
 
-float Math::sqrt(float x) {
+float sqrt(float x) {
     if (x < 0) {
         return -1;
     }
@@ -51,7 +51,7 @@ float Math::sqrt(float x) {
     return guess;
 }
 
-int Math::floor(float x) {
+int floor(float x) {
     if (x == (int)x) {
         return x;
     }
@@ -61,7 +61,7 @@ int Math::floor(float x) {
     return (int)x - 1;
 }
 
-float Math::pow(float number, int exponent) {
+float pow(float number, int exponent) {
     double result = 1.0;
     bool negative = false;
     if (exponent < 0) {
@@ -77,13 +77,13 @@ float Math::pow(float number, int exponent) {
     return result;
 }
 
-float Math::abs(float x) {
+float abs(float x) {
     if (x < 0) {
         x = -1 * x;
     }
     return x;
 }
 
-float Math::cosinus(float x) {
+float cosinus(float x) {
     return sinus(x, true);
 }

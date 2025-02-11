@@ -16,9 +16,7 @@ int main(int argc, char *argv[])
 
     drawMenu();
 
-    Raycasting raycasting_obj;
-
-    raycasting_obj.Raycast();
+    Raycast();
 
     bool running = true;
 

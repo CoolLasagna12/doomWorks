@@ -13,14 +13,14 @@ float playerDirection = 0.0f;
 
 const float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
 
-void Raycasting::changePosition(float x, float y, float rotation) {
+void changePosition(float x, float y, float rotation) {
     playerX = x / float(EADK::Screen::Width) * tileSize;
     playerY = y / float(EADK::Screen::Height) * tileSize;
     playerDirection = rotation;
     Raycast();
 }
 
-bool Raycasting::checkWall(int x, int y) {
+bool checkWall(int x, int y) {
     if (x >= 0 && x < MAP_WIDTH && y >= 0 && y < MAP_HEIGHT) {
         if (worldMap[int(y)][int(x)] == 1) {
             return true;
@@ -29,8 +29,7 @@ bool Raycasting::checkWall(int x, int y) {
     return false;
 };
 
-void Raycasting::Raycast() {
-    Math math_obj;
+void Raycast() {
     int drawX = 0;
     for (int x = 0; x < EADK::Screen::Width/2; x++) {
         x = x * 2;
@@ -42,13 +41,13 @@ void Raycasting::Raycast() {
 
         float hitPosition = 0.0f;
 
-        float dx = math_obj.sinus(vision * 90.0f * FOV + playerDirection, false);
-        float dy = -math_obj.cosinus(vision * 90.0f * FOV + playerDirection);
-        int mapX = int(math_obj.floor(rayx));
-        int mapY = int(math_obj.floor(rayy));
+        float dx = sinus(vision * 90.0f * FOV + playerDirection, false);
+        float dy = -cosinus(vision * 90.0f * FOV + playerDirection);
+        int mapX = int(floor(rayx));
+        int mapY = int(floor(rayy));
 
-        float deltaDistX = (dx == 0) ? 1e30f : math_obj.abs(1.0f / dx);
-        float deltaDistY = (dy == 0) ? 1e30f : math_obj.abs(1.0f / dy);
+        float deltaDistX = (dx == 0) ? 1e30f : abs(1.0f / dx);
+        float deltaDistY = (dy == 0) ? 1e30f : abs(1.0f / dy);
 
         int stepX, stepY;
         float sideDistX, sideDistY; 
@@ -105,7 +104,7 @@ void Raycasting::Raycast() {
                 else {
                     hitPosition = rayx + perpWallDist * dx;
                 }
-                hitPosition -= math_obj.floor(hitPosition);
+                hitPosition -= floor(hitPosition);
 
                 break;
             }
