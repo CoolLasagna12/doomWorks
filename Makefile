@@ -13,6 +13,10 @@ endef
 src = $(addprefix src/,\
   main.cpp \
 )
+src += $(addprefix src/HANDLERS/,\
+  graphics_handler.cpp \
+  input_handler.cpp \
+)
 src += $(addprefix src/EADK/,\
   eadk_vars.cpp \
 )

@@ -7,17 +7,16 @@
 
 const float PI = 3.14159265359f;
 
-float playerX = 2.5f;
-float playerY = 2.5f;
-float playerDirection = 0.0f;
+float tempPlayerX = 2.5f;
+float tempPlayerY = 2.5f;
+float tempPlayerDirection = 0.0f;
 
 const float FOV = 0.5f; //FOV doit être égal à x/180 où x représente le FOV, ainsi, pour 0.5f, le FOV est de 90 degrés
 
 void changePosition(float x, float y, float rotation) {
-    playerX = x / float(EADK::Screen::Width) * tileSize;
-    playerY = y / float(EADK::Screen::Height) * tileSize;
-    playerDirection = rotation;
-    Raycast();
+    tempPlayerX = x / float(EADK::Screen::Width) * tileSize;
+    tempPlayerY = y / float(EADK::Screen::Height) * tileSize;
+    tempPlayerDirection = rotation;
 }
 
 bool checkWall(int x, int y) {
@@ -34,15 +33,15 @@ void Raycast() {
     for (int x = 0; x < EADK::Screen::Width/2; x++) {
         x = x * 2;
         float vision = ((x * 2.0f) / EADK::Screen::Width) - 1;
-        float rayx = playerX;
-        float rayy = playerY;
+        float rayx = tempPlayerX;
+        float rayy = tempPlayerY;
         int count = 0;
         bool touched = false;
 
         float hitPosition = 0.0f;
 
-        float dx = sinus(vision * 90.0f * FOV + playerDirection, false);
-        float dy = -cosinus(vision * 90.0f * FOV + playerDirection);
+        float dx = sinus(vision * 90.0f * FOV + tempPlayerDirection, false);
+        float dy = -cosinus(vision * 90.0f * FOV + tempPlayerDirection);
         int mapX = int(floor(rayx));
         int mapY = int(floor(rayy));
 
@@ -125,7 +124,7 @@ void Raycast() {
                 if (wallHeight - i > 0) {
                     pixelSize = remainingPixels / (wallHeight - i);
                 }
-                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height / 2 - nbPixels / 2 + nbPixels - remainingPixels, 2, pixelSize), wallTexture[i * 16 + pixelNb]);
+                EADK::Display::pushRectUniform(EADK::Rect(drawX * 2, EADK::Screen::Height / 2 - nbPixels / 2 + nbPixels - remainingPixels, 2, pixelSize), wallTexture[i * wallHeight + pixelNb]);
                 remainingPixels -= pixelSize;
             }
             drawX++;

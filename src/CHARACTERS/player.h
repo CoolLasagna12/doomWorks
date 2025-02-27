@@ -5,13 +5,12 @@
 
 class Player {
 public:
-	Player();
-	float playerX;
-	float playerY;
+	float playerX = 160.0f;
+	float playerY = 111.0f;
 	void move(int movement);
 	void turn(float deg);
 	static constexpr int k_step = 5;
-	float direction = 0.0;
+	float playerDirection = 0.0f;
 private:
 	bool checkInsideWall(int x, int y);
 };

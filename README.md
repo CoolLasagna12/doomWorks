@@ -4,21 +4,17 @@ At this day we still can't make Doom run on a calculator. I found out how to pla
 
 ## Roadmap
 
-✅ Raycasting system
+✅ v0.0.1 - Raycasting system
 
-✅ Better player movements and collision
+✅ v0.1.0 - Walls texturing
 
-▶️ Main Menu
+▶️ v0.2.0 - Ennemies and guns
 
-▶️ Adding textures
+❌ v0.3.0 - HUD
 
-▶️ Making the code better
+❌ v0.4.0 - Better menu and options
 
-❌ Ennemies and guns
-
-❌ HUD
-
-❌ Multiple levels and gameplay enhancement
+❌ v1.0.0 - Multiple levels and gameplay enhancement
 
 ## Building
 

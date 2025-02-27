@@ -3,16 +3,9 @@
 #include "../LIBS/math.h"
 #include "../RAYCASTING/map.h"
 
-Player::Player() :
-	playerX(160),
-	playerY(111)
-{
-
-}
-
 void Player::turn(float deg) {
-    direction += deg;
-    changePosition(int(playerX), int(playerY), direction);
+    playerDirection += deg;
+    changePosition(int(playerX), int(playerY), playerDirection);
 };
 
 bool Player::checkInsideWall(int x, int y) {
@@ -29,13 +22,13 @@ bool Player::checkInsideWall(int x, int y) {
 void Player::move(int movement) {
   float lastPlayerX = playerX;
   float lastPlayerY = playerY;
-  playerX += movement * sinus(direction, false);
-  playerY -= movement * cosinus(direction);
+  playerX += movement * sinus(playerDirection, false);
+  playerY -= movement * cosinus(playerDirection);
   if (checkInsideWall(int(playerX), int(playerY))) {
       playerX = lastPlayerX;
       playerY = lastPlayerY;
   }
   else {
-      changePosition(playerX, playerY, direction);
+      changePosition(playerX, playerY, playerDirection);
   }
 }
