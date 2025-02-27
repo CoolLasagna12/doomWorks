@@ -2,10 +2,17 @@ import numpy as np
 from PIL import Image
 
 img = Image.open('WALL.bmp')
+img_rgba = img.convert('RGBA')
 
-img_rgb = img.convert('RGB')
-data = np.array(img_rgb)
-flat_data = data.reshape(-1, 3)
-hex_data = [f"0x{r:02x}{g:02x}{b:02x}" for r, g, b in flat_data]
+data = np.array(img_rgba)
+flat_data = data.reshape(-1, 4)
+
+hex_data = []
+for r, g, b, a in flat_data:
+    if a < 255:
+        hex_data.append("0")
+    else:
+        hex_data.append(f"0x{r:02x}{g:02x}{b:02x}")
+
 char_string = 'uint8_t char0[charLength] = {' + ','.join(hex_data) + '};'
 print(char_string)
